@@ -37,10 +37,11 @@ Authorization: Bearer <token>
 
 ### Client (public)
 
-| Méthode | Route              | Description                   |
-|---------|--------------------|-------------------------------|
-| POST    | `/api/orders`      | Passer une commande           |
-| GET     | `/api/orders/{id}` | Consulter une commande par id |
+| Méthode | Route              | Description                      |
+|---------|--------------------|----------------------------------|
+| POST    | `/api/orders`      | Passer une commande              |
+| GET     | `/api/menu`        | Consulter la carte du restaurant |
+| GET     | `/api/orders/{id}` | Consulter une commande par id    |
 
 **Exemple body pour passer commande** (menuItemId: quantité) :
 

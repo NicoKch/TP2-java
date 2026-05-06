@@ -62,6 +62,7 @@ public class SpringSecurityConfiguration {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/h2-console/**").permitAll()
                         .requestMatchers("/api/login").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/menu").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/orders").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/orders/**").permitAll()
                         .anyRequest().authenticated()
