@@ -1,6 +1,7 @@
 package cci.fr.TP2_java.services;
 
 import cci.fr.TP2_java.entities.*;
+import cci.fr.TP2_java.exception.OrderNotFoundException;
 import cci.fr.TP2_java.repositories.EmployeeRepository;
 import cci.fr.TP2_java.repositories.MenuItemRepository;
 import cci.fr.TP2_java.repositories.OrderRepository;
@@ -41,7 +42,7 @@ public class OrderService {
     // US2 - Client consulte sa commande
     public Order getOrderById(Long id) {
         return orderRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Commande introuvable : " + id));
+                .orElseThrow(() -> new OrderNotFoundException(id));
     }
 
     // US3 - Employé consulte les commandes en attente

@@ -1,6 +1,8 @@
 package cci.fr.TP2_java.services;
 
 import org.springframework.security.core.Authentication;
+import org.springframework.security.oauth2.jose.jws.MacAlgorithm;
+import org.springframework.security.oauth2.jwt.JwsHeader;
 import org.springframework.security.oauth2.jwt.JwtClaimsSet;
 import org.springframework.security.oauth2.jwt.JwtEncoder;
 import org.springframework.security.oauth2.jwt.JwtEncoderParameters;
@@ -26,6 +28,9 @@ public class TokenService {
                 .expiresAt(now.plus(1, ChronoUnit.DAYS))
                 .subject(authentication.getName())
                 .build();
-        return jwtEncoder.encode(JwtEncoderParameters.from(claims)).getTokenValue();
+        JwtEncoderParameters parameters = JwtEncoderParameters.from(
+                JwsHeader.with(MacAlgorithm.HS256).build(), claims
+        );
+        return jwtEncoder.encode(parameters).getTokenValue();
     }
 }
